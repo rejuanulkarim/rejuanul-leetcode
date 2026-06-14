@@ -10,22 +10,22 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        ListNode fast = head, slow = head;
-        int res =0;
-        while(fast != null && fast.next != null ){
+        // Middle of the Linked List
+        ListNode slow = head, fast = head;
+        while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }
-        if(slow.next == null ) return head.val + slow.val;
+        // reverse 2nd half linked list
         ListNode preNode = null;
-        ListNode currNode = slow;
-        ListNode nextNode = null;
-        while(currNode != null){
-            nextNode = currNode.next;
-            currNode.next = preNode;
-            preNode = currNode;
-            currNode = nextNode;
+        while(slow != null){
+            ListNode next = slow.next;
+            slow.next = preNode;
+            preNode  = slow;
+            slow = next;
         }
+        // find maximum sum
+        int res = Integer.MIN_VALUE;
         ListNode node1 = head, node2 = preNode;
         while(node2 != null){
             res = Math.max(res,node1.val+node2.val);
@@ -34,5 +34,4 @@ class Solution {
         }
         return res;
     }
-    
 }
