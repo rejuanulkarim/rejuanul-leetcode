@@ -1,3 +1,4 @@
+/*
 class Solution {
     public int romanToInt(String s) {
         Map<Character, Integer> map = Map.of(
@@ -31,5 +32,36 @@ class Solution {
             p=pMap.get(chars[i]);
         }
         return res;
+    }
+}
+*/
+
+class Solution {
+    int value(char ch){
+        switch(ch){
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+            default: return 0;
+        }
+    }
+    public int romanToInt(String s) {
+        int res = 0, flag = 0;
+        for(int i =s.length()-1;i>=0;i--){
+            char ch = s.charAt(i);
+            int num = value(ch);
+            if(num >= flag){
+                res += num;
+            }else{
+                res -= num;
+            }
+            flag = num;
+        }
+        return res;
+
     }
 }
