@@ -19,19 +19,20 @@ class Solution {
      */
     int idx = 0;
     int[] pre , in ;
+    HashMap<Integer,Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         int n = preorder.length;
         pre = preorder; 
         in = inorder;
+        for(int i=0;i<n;i++){
+            map.put(inorder[i],i);
+        }
         return treeBuilder(0, n-1);
     }
     TreeNode treeBuilder(int start,int end){
         if(start > end) return null;
         int rootVal = pre[idx];
-        int i = start;
-        for(;i<= end;i++){
-            if(in[i] == rootVal) break;
-        }
+        int i = map.get(rootVal);
         idx++;
         TreeNode root = new TreeNode(rootVal);
         root.left = treeBuilder(start,i-1);
