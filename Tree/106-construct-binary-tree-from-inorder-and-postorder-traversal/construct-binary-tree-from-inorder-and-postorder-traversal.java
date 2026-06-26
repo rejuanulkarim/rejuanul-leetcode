@@ -27,8 +27,9 @@ class Solution {
     }
     TreeNode TreeBuilder(int[] in, int[] post,int start,int end){
         if(start>end) return null;
-        TreeNode root = new TreeNode(post[idx--]); // after root value idx = idx-1.
-        int inIdx = map.get(root.val);
+        int val = post[idx--]; // after root value idx = idx-1.
+        TreeNode root = new TreeNode(val); 
+        int inIdx = map.get(val);
         root.right = TreeBuilder(in,post,inIdx+1, end);
         root.left = TreeBuilder(in,post,start,inIdx-1);
         return root;
