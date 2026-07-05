@@ -40,9 +40,9 @@ class Solution {
                 Pair up = dp[i-1][j];
                 Pair upLeft = dp[i-1][j-1];
                 int val =(currRow[j] != 'S')? currRow[j]-'0':0;
-                int best = Math.max(up.sum, Math.max(left.sum, upLeft.sum));
+                int best = (up.sum > left.sum && up.sum > upLeft.sum)?up.sum:(left.sum>upLeft.sum)?left.sum:upLeft.sum;
                 if (best == up.sum) {
-                     path = (path + up.path) % MOD;
+                    path = (path + up.path) % MOD;
                 }
                 if (best == left.sum) {
                     path = (path + left.path) % MOD;
