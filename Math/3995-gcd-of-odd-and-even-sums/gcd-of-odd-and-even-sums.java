@@ -18,8 +18,7 @@ class Solution {
     }
 }
 */
-// /* 
-
+/* 
 class Solution {
     public int gcdOfOddEvenSums(int n) {
         int oddSum =0, evenSum =0;
@@ -35,13 +34,14 @@ class Solution {
         return evenSum;
     }
 }
-// */
+*/
 
-/*
+// /*
 
 class Solution {
     public int gcdOfOddEvenSums(int n) {
+        return n;
     }
-    }
+}
 
- */
+//  */
