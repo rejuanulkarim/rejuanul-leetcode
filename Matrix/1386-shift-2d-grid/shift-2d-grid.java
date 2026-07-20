@@ -33,6 +33,7 @@ class Solution {
 }
 */
 
+/*
 class Solution {
     List<List<Integer>> list = new ArrayList<>();
     int []arr;
@@ -70,5 +71,31 @@ class Solution {
             }
             list.add(curr);
         }
+    }
+}
+*/
+class Solution {
+    public List<List<Integer>> shiftGrid(int[][] grid, int k) {
+        List<List<Integer>> list = new ArrayList<>();
+        int row = grid.length;
+        int col = grid[0].length;
+        int total = row*col;
+        int []arr = new int[total];
+        int idx =k;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                idx = idx%total;
+                arr[idx++] = grid[i][j];
+            }
+        }
+        idx=0;
+        for(int i=0;i<row;i++){
+            List<Integer> curr = new ArrayList<>();
+            for(int j=0;j<col;j++){
+                curr.add(arr[idx++]);
+            }
+            list.add(curr);
+        }
+        return list;
     }
 }
