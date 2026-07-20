@@ -1,3 +1,4 @@
+/*
 class Solution {
     public List<List<Integer>> shiftGrid(int[][] grid, int k) {
         int row = grid.length;
@@ -29,5 +30,45 @@ class Solution {
         }
         return list;
     }
+}
+*/
 
+class Solution {
+    List<List<Integer>> list = new ArrayList<>();
+    int []arr;
+    public List<List<Integer>> shiftGrid(int[][] grid, int k) {
+        int row = grid.length;
+        int col = grid[0].length;
+        int total = row*col;
+        arr = new int[total];
+        k = k%total;
+        int idx = 0;
+        for(int i =row-1;i>=0;i--){
+            for(int j=col-1; j>=0;j--){
+                arr[idx++] = grid[i][j];
+            }
+        }
+        reverse(arr,0,k-1);
+        reverse(arr,k,total-1);
+        makeList(arr,row,col);
+        return list;
+    }
+    private void reverse(int []arr,int s, int e){
+        while(s < e){
+            int temp = arr[s];
+            arr[s] = arr[e];
+            arr[e] = temp;
+            s++;e--;
+        }
+    }
+    private void makeList(int []arr,int row,int col){
+        int idx = 0;
+        for(int i=0;i<row;i++){
+            List<Integer> curr = new ArrayList<>();
+            for(int j=0;j<col;j++){
+                curr.add(arr[idx++]);
+            }
+            list.add(curr);
+        }
+    }
 }
