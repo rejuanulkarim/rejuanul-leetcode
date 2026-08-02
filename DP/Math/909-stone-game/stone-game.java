@@ -1,5 +1,6 @@
+/*
 class Solution {
-    int dp[][];
+    private int dp[][];
     public boolean stoneGame(int[] piles) {
         int n = piles.length;
         dp = new int[n][n];
@@ -21,5 +22,11 @@ class Solution {
         int takeLeft = nums[left]+Math.min(p1,p2);
         int takeRight = nums[right] + Math.min(p2,p3);
         return dp[left][right] = Math.max(takeLeft,takeRight);
+    }
+}
+*/
+class Solution {
+    public boolean stoneGame(int[] piles) {
+        return true;
     }
 }
