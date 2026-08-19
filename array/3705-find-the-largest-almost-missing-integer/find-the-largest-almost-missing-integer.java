@@ -9,12 +9,11 @@ class Solution {
             }
             for(int num:set) freq[num]++;
         }
-        int res =-1;
         for(int i= freq.length-1;i>=0;i--){
             if(freq[i] == 1) {
                 return i;
             }
         }
-        return res;
+        return -1;
     }
 }
